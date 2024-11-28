@@ -1,0 +1,8 @@
+/.gradle/
+/.idea/
+/reactive-rest-mongo/build/
+/reactive-rest-mongo/.gradle/
+/rest-mongo/.gradle/
+/rest-mongo/build/
+/soap-mongo/.gradle/
+/soap-mongo/build/
