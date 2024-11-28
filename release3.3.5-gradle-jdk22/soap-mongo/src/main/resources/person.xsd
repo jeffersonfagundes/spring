@@ -1,0 +1,74 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://localhost:8080/springsoap"
+           targetNamespace="http://localhost:8080/springsoap" elementFormDefault="qualified">
+
+    <xs:element name="getPersonsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="filters" type="tns:filterDTO"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="filterDTO">
+        <xs:sequence>
+            <xs:element name="uuid" type="xs:string" minOccurs="0"/>
+            <xs:element name="name" type="xs:string" minOccurs="0"/>
+            <xs:element name="document" type="xs:string" minOccurs="0"/>
+            <xs:element name="gender" type="tns:genderEnum" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="genderEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="MASCULINO"/>
+            <xs:enumeration value="FEMININO"/>
+            <xs:enumeration value="TRANS"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="getPersonsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="persons" type="tns:personOut" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="personOut">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="document" type="xs:string"/>
+            <xs:element name="gender" type="xs:string"/>
+            <xs:element name="dateOfBirth" type="xs:date"/>
+            <xs:element name="fullAddress" type="xs:string"/>
+            <xs:element name="createdDate" type="xs:dateTime"/>
+            <xs:element name="lastModifiedDate" type="xs:dateTime"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="createdPersonsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="persons" type="tns:personIn" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="createdPersonsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="persons" type="tns:personOut" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="personIn">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="document" type="xs:string"/>
+            <xs:element name="gender" type="xs:string"/>
+            <xs:element name="dateOfBirth" type="xs:date"/>
+            <xs:element name="fullAddress" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

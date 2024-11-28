@@ -1,0 +1,5 @@
+rootProject.name =  'release3.3.5-gradle-jdk22'
+
+includeBuild  'reactive-rest-mongo'
+includeBuild  'rest-mongo'
+includeBuild  'soap-mongo'
